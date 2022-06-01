@@ -1,10 +1,11 @@
+from http.client import HTTPMessage, HTTPResponse
 from lib2to3.pgen2 import token
+from urllib import response
 from django.shortcuts import render, reverse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as django_login, logout as django_logout
-from django.http import HttpResponseRedirect
-
-#from . models import PasswordResetRequest
+from django.http import HttpResponse, HttpResponseRedirect
+from . models import PasswordResetRequest
 
 
 def login(request):
@@ -47,3 +48,53 @@ def sign_up(request):
    return render(request, 'login_app/sign_up.html', context)
 
 
+
+def request_password_reset(request):
+    if request.method == "POST":
+        old_user = request.POST['username']
+        user = None
+
+        if old_user:
+            try:
+                user = User.objects.get(username=old_user)
+            except:
+                print(f"Password request is invalid: {old_user}")
+        else:
+            new_user = request.POST['email']
+            try:
+                user = User.objects.get(email=old_user)
+            except:
+                print(f"Invalid password request: {old_user}")
+        if user:
+            reset_pass = PasswordResetRequest()
+            reset_pass.user = user
+            reset_pass.save()
+            print(reset_pass)
+          
+            return HttpResponseRedirect(reverse('login_app:password_reset'))
+
+    return render(request, 'login_app/request_password_reset.html')
+ 
+ 
+
+def password_reset(request):
+    if request.method == "POST":
+        old_user = request.POST['username']
+        password = request.POST['password']
+        confirm_password = request.POST['confirm_password']
+        token = request.POST['token']
+
+        if password == confirm_password:
+            try:
+                reset_pass = PasswordResetRequest.objects.get(token=token)
+                reset_pass.save()
+            except:
+                print("Invalid password reset attempt.")
+                return render(request, 'login_app/password_reset.html')
+
+            user = reset_pass.user
+            user.set_password(password)
+            user.save()
+            return HttpResponseRedirect(reverse('login_app:login'))
+
+    return render(request, 'login_app/password_reset.html')

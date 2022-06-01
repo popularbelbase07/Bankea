@@ -74,15 +74,12 @@ span.psw {
 
     <div class="container" style="background-color:#f1f1f1; height:50px">
       <button type="button" class="cancelbtn"><a href="{% url 'bank_app:home' %}">Cancel</a></button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
+      <span class="psw">Forgot <a href="{% url 'login_app:request_password_reset' %}">password?</a></span>
     </div>
   </form>
 </div>
 
 </form>
-{% if error %}
-      {{ error }}
-{% endif %}
 {% endblock main %}
 
 
