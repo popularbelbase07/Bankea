@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% crispy customer_form customer_form.helper %}
+{% block main %}
+
+<div class="base-wrap">
+    <form action="{% url 'bank_app:new_customer' %}" method="post">      
+                {% csrf_token %}
+                <fieldset>
+                    {{ new_user_form|crispy  }}
+                
+                    {% crispy customer_form %}
+                <button type="submit" class="btn btn-primary">Create customer</button>
+                </fieldset>
+    </form>
+{% endblock main %}

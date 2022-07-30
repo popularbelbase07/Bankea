@@ -1,0 +1,8 @@
+{% for customer in customers %}
+<tr>
+    <td><a href="{% url 'bank_app:customer_details' customer.pk %}">{{ customer.pk }}</a></td>
+    <td>{{ customer.full_name }}</td>
+    <td>{{ customer.phone }}</td>
+    <td>{{ customer.user.email }}</td>
+</tr>
+{% endfor %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% crispy user_form %}
+{% block main %}
+<br>
+
+<h3>{{ user }}'s Information</h3>
+<br>
+
+
+<form action="{% url 'bank_app:user_profile' user.pk %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        {{ user_form | crispy }}
+
+        <button type="submit" class="btn btn-primary">Update</button>
+    
+    </fieldset>
+</form>
+
+
+{% endblock main %}

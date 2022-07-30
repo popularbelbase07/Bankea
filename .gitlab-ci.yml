@@ -1,0 +1,31 @@
+# .gitlab-ci.yml
+
+#FOR DEV
+image: python:3.10-alpine3.14
+
+variables:
+  DEBUG: "True"
+  ALLOWED_HOSTS:  "['*']"
+  DB_ENGINE: "django.db.backends.postgresql"
+  DB_NAME: "postgres"
+  STATIC_URL: "/static/"
+
+# This folder is cached between builds
+# http://docs.gitlab.com/ee/ci/yaml/README.html#cache
+cache:
+  paths:
+  - ~/.cache/pip/
+
+before_script:
+  - echo 'Upgrading'
+  - pip install --upgrade pip
+  - pip install -r requirements.txt
+  - sh ./setup-env.sh
+  - cat ./.env
+
+test:
+  script:
+    # - cd bank_project
+    - python3 bank_project/manage.py makemigrations
+    - python3 bank_project/manage.py migrate
+    - python3 bank_project/manage.py test
