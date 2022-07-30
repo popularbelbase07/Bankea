@@ -1,0 +1,30 @@
+{% extends "login_app/base.html" %}
+
+{% block main %}
+<h3>welcome, {{ user }}</h3> 
+
+<form action="{% url 'login_app:logout' %}" method="POST">
+    {% csrf_token %}
+    <fieldset>
+    <button> <a href="{% url 'login_app:logout' %}"></a>Logout</button>
+    <hr>
+   
+<br>
+
+<table>
+    <thead>
+        <th>ID</th>
+        <th>Persal ID</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+    </thead>
+    <tbody id="search-results">
+    </tbody>
+</table>
+
+</fieldset>
+</form>
+
+
+{% endblock %}
