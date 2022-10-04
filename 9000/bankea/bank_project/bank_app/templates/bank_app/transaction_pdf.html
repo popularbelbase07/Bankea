@@ -1,0 +1,62 @@
+{% extends "base.html" %} {% block main %}
+<h2>Welcome, <strong> {{ user }}.</strong></h2>
+
+<h3>Transaction Details</h3>
+
+<html>
+  <head>
+    <style>
+      #customers {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      #customers td,
+      #customers th {
+        border: 1px solid #ddd;
+        padding: 5px;
+      }
+
+      #customers tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      #customers tr:hover {
+        background-color: #ddd;
+      }
+
+      #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #04aa6d;
+        color: white;
+        table-layout: fixed;
+      }
+    </style>
+  </head>
+
+  <body>
+    <table id="customers">
+      <tr>
+        <th>Account Number</th>
+        <th>Transaction ID</th>
+        <th>Amount</th>
+        <th>Description</th>
+        <th>Date and Time</th>
+      </tr>
+      {%for movement in movements%}
+      <tr>
+        <td style="width: 28%">{{movement.account_id}}</td>
+        <td sttyle="width: 11%; text-align: left;">{{movement.transaction}}</td>
+        <td style="width: 11%">{{movement.amount}}</td>
+        <td style="width: 35%">{{movement.description}}</td>
+        <td style="width: 15%">{{movement.created_at}}</td>
+      </tr>
+      {%endfor%}
+    </table>
+  </body>
+</html>
+
+{% endblock main %}

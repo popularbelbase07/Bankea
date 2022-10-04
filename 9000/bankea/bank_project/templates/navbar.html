@@ -1,0 +1,84 @@
+{% url 'bank_app:index' as home %}
+{% url 'bank_app:new_customer' as new_customer %}
+{% url 'bank_app:user_profile' as profile %}
+{% url 'bank_app:currency_converter' as currency %}
+{% url 'bank_app:dashboard' as dashboard %}
+{% url 'bank_app:customer_profile' as customer_profile %}
+{% url 'bank_app:make_loan' as make_loan %}
+{% url 'bank_app:make_transfer' as make_transfer %}
+{% url 'bank_app:make_external_transfer' as make_external_transfer %}
+{% url 'bank_app:add_new_bank' as add_new_bank %}
+{% url 'bank_app:transaction_pdf' as transaction_pdf %}
+
+
+{% url 'two_factor:login' as login %}
+{% url 'logout' as logout %}
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{{ home }}">Bankea</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            {% if request.user.is_authenticated %}
+            <li class="nav-item {% if request.path == currency %} active {%endif%}">
+                <a class="nav-link" href="{% url 'bank_app:currency_converter' %}">Currency</a>
+            </li>
+            {% if user.is_staff %}
+            <!-- <li class="nav-item {% if request.path == home %} active {%endif%}">
+                <a class="nav-link" href="{{ home }}">Home</a>
+            </li> -->
+            <li class="nav-item {% if request.path == new_customer %} active {%endif%}">
+                <a class="nav-link" href="{{ new_customer }}">New Customer</a>
+            </li>
+            <li class="nav-item {% if request.path == user_profile %} active {%endif%}">
+                <a class="nav-link" href="{% url 'bank_app:user_profile' pk=user.pk %}">Profile</a>
+            </li>
+            {% comment %} <li class="nav-item {% if request.path == add_new_bank %} active {%endif%}">
+                <a class="nav-link" href="{{ add_new_bank }}">Bank List</a>
+            </li> {% endcomment %}
+            <li class="nav-item {% if request.path == transaction_pdf %} active {%endif%}">
+                <a class="nav-link" href="{{ transaction_pdf }}">Transaction PDF</a>
+            </li>
+
+            {% endif %}
+            {% if user.customer %}  
+
+            <li class="nav-item {% if request.path == dashboard %} active {%endif%}">
+                <a class="nav-link" href="{{ dashboard }}">My Accounts</a>
+            </li>
+
+            <li class="nav-item {% if request.path == customer_profile %} active {%endif%}">
+                <a class="nav-link" href="{% url 'bank_app:customer_profile' pk=user.pk %}">Profile</a>
+            </li>
+
+            <li class="nav-item {% if request.path == make_loan  %} active {%endif%}">
+                <a class="nav-link" href="{{ make_loan }}">Make Loan</a>
+            </li>
+
+            <li class="nav-item {% if request.path == make_transfer  %} active {%endif%}">
+                <a class="nav-link" href="{{ make_transfer }}">Internal Transfer</a>
+            </li>
+            
+            <li class="nav-item {% if request.path == make_external_transfer  %} active {%endif%}">
+                <a class="nav-link" href="{{ make_external_transfer }}">External Transfer</a>
+            </li>
+
+            {%endif%}
+            <li class="nav-item {% if request.path == logout %} active {%endif%}">
+                <a class="nav-link" id="logout" href="{{ logout }}">Logout</a>
+            </li>
+            {% comment %} {% else %}
+            <li class="nav-item {% if request.path == login %} active {%endif%}">
+                <a id="logout" class="nav-link" href="{{ login }}">Login</a>
+            </li> {% endcomment %}
+            <!-- <li class="nav-item {% if request.path == register_url %} active {%endif%}">
+                <a class="nav-link" href="{{register_url}}">Register</a>
+            </li> -->
+
+            {% endif %}
+    </ul>
+  </div>
+</nav>

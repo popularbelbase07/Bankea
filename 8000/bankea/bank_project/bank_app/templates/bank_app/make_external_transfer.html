@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% crispy form  %}
+{% block main %}
+<form action="{% url 'bank_app:make_external_transfer' %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        {{ form | crispy }}
+        <button type="submit" class="btn btn-primary">Send Transfer</button>
+    </fieldset>
+</form>
+{% endblock main %}

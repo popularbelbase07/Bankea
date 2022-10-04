@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    font-family: "Quicksand";
+    color: #333;
+}
+
+.base-wrap {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 5px;
+}
+
+nav {
+    padding: 20px;
+    border-bottom: 1px solid #f2f2f2;
+}
+.nav .li {
+    background-color: green;
+}
+
+h2 {
+    text-align: center;
+}
+
+tr,
+td {
+    padding: 2px;
+}
+
+.login-form {
+    background: #fff;
+    width: 500px;
+    margin: auto -60px;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    border-radius: 4px;
+    box-shadow: 0 2px 25px rgba(0, 0, 0, 0.2);
+}
+
+.login-form h1 {
+    padding: 35px 35px 0 35px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.login-form .content {
+    padding: 25px;
+    text-align: center;
+}
+
+::placeholder {
+    text-align: center;
+}
+
+.login-form .input-field {
+    padding: 12px 25px;
+}
+
+.login-form .input-field input {
+    font-size: 16px;
+    display: block;
+    font-family: 'Rubik', sans-serif;
+    width: 100%;
+    padding: 10px 55px;
+    border: 0;
+    border-bottom: 1px solid #747474;
+    outline: none;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+    text-align: center;
+}
+
+.login-form .input-field input::-webkit-input-placeholder {
+    text-transform: uppercase;
+}
+
+.login-form .input-field input::-moz-placeholder {
+    text-transform: uppercase;
+}
+
+.login-form .input-field input:-ms-input-placeholder {
+    text-transform: uppercase;
+}
+
+.login-form .input-field input::-ms-input-placeholder {
+    text-transform: uppercase;
+}
+
+.login-form .input-field input::placeholder {
+    text-transform: uppercase;
+}
+
+.login-form .input-field input:focus {
+    border-color: #222;
+}
+
+.login-form a.link {
+    text-decoration: none;
+    color: #747474;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.login-form .action {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+}
+
+.login-form .action button {
+    width: 100%;
+    border: none;
+    padding: 18px;
+    font-family: 'Rubik', sans-serif;
+    cursor: pointer;
+    text-transform: uppercase;
+    background: #e8e9ec;
+    color: #777;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 0;
+    letter-spacing: 0.2px;
+    outline: 0;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+.login-form .action button:hover {
+    background: #d8d8d8;
+}
+
+.login-form .action button:nth-child(2) {
+    background: #2d3b55;
+    color: #fff;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 4px;
+}
+
+.login-form .action button:nth-child(2):hover {
+    background: #3c4d6d;
+}
+
+/* Table css */
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: white;
+}
+
+tbody tr td {
+    font-size: large;
+}
+
+#setup_button {
+    position:relative;
+    transition: .5s ease;
+    top: 50%;
+    left: 63%;
+}
+
+.negative {
+    color: red;
+}
+
+.positve {
+    color: green;
+}
+
+#balance-positive {
+    color: green;
+    font-size: 1.2rem;
+}
+
+#balance-negative {
+    color: red;
+    font-size: 1.2rem;
+}
+
+#table-positive{
+    color: green;
+}
+
+#table-negative{
+    color: red;
+}
+
+.loan-form {
+    background: #fff;
+    width: 500px;
+    margin: auto auto;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    border-radius: 4px;
+    box-shadow: 0 2px 25px rgba(0, 0, 0, 0.2);
+}
+
+
+.loan-form h1 {
+    padding: 35px 35px 0 35px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.loan-form .content {
+    padding: 25px;
+    text-align: center;
+}
+
+
+.loan-form .input-field {
+    padding: 12px 25px;
+}
+
+.loan-form .input-field input {
+    font-size: 16px;
+    display: block;
+    font-family: 'Rubik', sans-serif;
+    width: 100%;
+    padding: 10px 55px;
+    border: 0;
+    border-bottom: 1px solid #747474;
+    outline: none;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+    text-align: center;
+}
+
+.loan-form .input-field input::-webkit-input-placeholder {
+    text-transform: uppercase;
+}
+
+.loan-form .input-field input::-moz-placeholder {
+    text-transform: uppercase;
+}
+
+.loan-form .input-field input:-ms-input-placeholder {
+    text-transform: uppercase;
+}
+
+.loan-form .input-field input::-ms-input-placeholder {
+    text-transform: uppercase;
+}
+
+.loan-form .input-field input::placeholder {
+    text-transform: uppercase;
+}
+
+.loan-form .input-field input:focus {
+    border-color: #222;
+}
+
+.loan-form a.link {
+    text-decoration: none;
+    color: #747474;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.loan-form .action {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+}
+
+.loan-form .action button {
+    width: 100%;
+    border: none;
+    padding: 18px;
+    font-family: 'Rubik', sans-serif;
+    cursor: pointer;
+    text-transform: uppercase;
+    background: #e8e9ec;
+    color: #777;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 0;
+    letter-spacing: 0.2px;
+    outline: 0;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+.loan-form .action button:hover {
+    background: #d8d8d8;
+}
+
+.loan-form .action button:nth-child(2) {
+    background: #2d3b55;
+    color: #fff;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 4px;
+}
+
+.loan-form .action button:nth-child(2):hover {
+    background: #3c4d6d;
+}

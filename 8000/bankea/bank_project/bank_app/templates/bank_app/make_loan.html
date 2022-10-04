@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div class="loan-form">
+<form action="{% url 'bank_app:make_loan' %}" method="post">
+    {% csrf_token %}
+    <div class="content">
+    <fieldset> 
+      <div class="input-field">
+        <label>Name for loan
+        <input type="text" id="inputGroup-sizing-default" name="name" class="form-control" placeholder="name" aria-label="name" aria-describedby="basic-addon1">
+    </label>
+      </div>
+      <div class="input-field">
+        <label>Amount
+        <input type="text" id="inputGroup-sizing-default" name="amount" class="form-control" placeholder="amount" aria-label="amount" aria-describedby="basic-addon1">
+    </label>
+  </div>
+    <br>
+      <div class="input-group mb-1 d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary">Create Loan</button>
+      </div>
+    
+  </fieldset>
+</div>
+</form>
+</div>
+{% endblock main %}

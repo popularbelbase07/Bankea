@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% crispy new_bank_form new_bank_form.helper %}
+{% block main %}
+
+<h3>Bank List</h3>
+
+<table>
+    <tr>
+        <th>Bank Id</th>
+        <th>Bank Name</th>
+        <th>Host Name</th>
+    {% for banklist in banklist %}
+    </tr>
+       <tr>
+        <td>{{ banklist.id }}</td>
+        <td>{{ banklist.bank_name }}</td>
+        <td>{{ banklist.host_name }}</td>
+    </tr> 
+{% endfor %}
+</table>
+   <br></br>
+
+<h3>Add New Bank</h3>
+
+    <form action="{% url 'bank_app:add_new_bank' %}" method="post">      
+        {% csrf_token %}
+        <fieldset>
+            {{ new_bank_form|crispy  }}
+
+        <button type="submit" class="btn btn-primary">Add New Bank</button>
+        </fieldset>          
+    </form>
+
+
+    {% endblock main %}

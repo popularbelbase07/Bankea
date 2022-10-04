@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div class="login-form">
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <div class="content">
+            <fieldset>
+                <div class="input-field">
+                    <label>
+                        <input name="username" type="text" placeholder="Username" />
+                    </label>
+                </div>
+                <div class="input-field">
+                    <label>
+                        <input name="password" type="password" placeholder="Password" autocomplete="new-password" />
+                    </label>
+                </div>
+        </div>
+            <div class="action">
+                <button>Forgot Password?</button>
+                <button>Log in</button>
+            </div>
+        </fieldset>
+
+    </form>
+</div>
+{% endblock main %}

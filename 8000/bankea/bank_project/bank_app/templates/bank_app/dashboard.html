@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<p>Welcome, {{ user.customer.full_name }}.</p>
+<div style="float: right;">
+    {% if balance > 0 %}
+        <h6 style="text-align: right;">Balance: <text id="balance-positive">{{ balance }}</text></h6>
+    {% else %}
+        <h6 style="text-align: right;">Balance: <text id="balance-negative">{{ balance }}</text></h6>
+    {% endif %}
+    <div style="text-align: right" ><h8>Rank: {{ rank }}</h8>
+</div>
+
+<h3>My accounts:</h3>
+ 
+<h5 style="text-align: left;">Account Number: {{ accountNo }}</h5></dib>
+<table>
+    <tr>
+        <th>Account Number</th>
+        <th>Account Name</th>
+        <th>Currency</th>
+        <th>Date and Time</th>
+        <th>Account Type</th>
+    </tr>
+    {% for account in accounts %}
+    <tr>
+        <td><a href="{% url 'bank_app:customer_account_details' account.pk %}">{{ account.pk }}</a></td>
+        <td>{{ account.name }}</td>
+        <td>{{ account.currency_type }}</td>
+        <td>{{ account.created_at }}</td>
+        <td>{{ account.is_loan }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<script>
+    function negatvePositiveColour() {
+        balance = document.getElementById('balance');
+        console.log(balance)
+        if ({balance} < 0) {
+            balance.className = 'negative'
+        } else {
+            balance.className = 'positive'
+        }
+    }
+</script>
+
+{% endblock main %}

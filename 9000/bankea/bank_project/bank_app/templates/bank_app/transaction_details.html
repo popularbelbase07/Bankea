@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% block main %}
+
+<p>Welcome, {{ user }}.</p>
+
+<h3>Transaction Details</h3>
+
+<table>
+  <tr>
+    <th>Account Number</th>
+    <th>Transaction ID</th>
+    <th>Amount</th>
+    <th>Description</th>
+    <th>Date and Time</th>
+  </tr>
+
+  {% for movement in movements %}
+  <tr>
+    <td>{{ movement.account_id }}</td>
+    <td>{{ movement.transaction }}</td>
+    {% if movement.amount > 0 %}
+    <td id="table-positive">{{ movement.amount|floatformat:"2" }}</td>
+    {% else %}
+    <td id="table-negative">{{ movement.amount|floatformat:"2" }}</td>
+    {% endif %}
+    <td>{{ movement.description }}</td>
+    <td>{{ movement.created_at }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<br />
+{% comment %}
+<a type="link" href="{% url 'bank_app:transaction_pdf' %}">
+  <button type="submit" class="btn btn-primary">Print PDF</button>
+</a>
+{% endcomment %} {% endblock main %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% crispy user_form %}
+{% block main %}
+{% url 'two_factor:setup' as setup %}
+{% url 'two_factor:disable' as disable %}
+
+<h3>{{ user }}'s Details</h3>
+
+
+<div id="setup_button">        
+    <a href={{ setup }}>
+        <button class="btn btn-info">Setup 2FA</button>
+    </a>
+    <a href={{ disable }}>
+        <button class="btn btn-danger">Disable 2FA</button>
+    </a>
+    
+</div>
+
+<h3>{{ user }}'s Details</h3>
+
+<form action="{% url 'bank_app:user_profile' user.pk %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        {{ user_form | crispy }}
+
+        <button type="submit" class="btn btn-primary">Update</button>
+    
+    </fieldset>
+</form>
+
+
+{% endblock main %}

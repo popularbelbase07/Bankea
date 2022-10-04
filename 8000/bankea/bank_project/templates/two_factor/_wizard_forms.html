@@ -1,0 +1,7 @@
+
+  {{ wizard.management_form }}
+  {% for field in wizard.form %}
+    <div class="input-field">
+    {{field.label }} {{field}}
+  </div>
+  {% endfor %}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% crispy customer_form user_form  %}
+{% crispy new_account_form %}
+{% block main %}
+
+<h3>Customer Details</h3>
+
+<form action="{% url 'bank_app:customer_details' customer.pk %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        {{ user_form | crispy }}
+        {{ customer_form | crispy }}
+        <button type="submit" class="btn btn-primary">Update user</button>
+    </fieldset>
+</form>
+<br>
+<table>
+    <thead>
+        <tr>
+            <th>Account Number</th>
+            <th>Account Name</th>
+            <th>Currency</th>
+            <th>Account Balance</th>
+            <th>Account type</th>
+        </tr>
+    </thead>
+    <tbody
+        id="account-list"
+        hx-swap="outerHTML"
+        hx-get="{% url 'bank_app:account_list_partial' customer.pk %}"
+        hx-trigger="load"> 
+    </tbody>
+
+</table>
+<br>
+<h3>Create New Account</h3>
+<form action="{% url 'bank_app:new_account_partial' customer.user.pk %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        {{ new_account_form | crispy }}
+        <button type="submit" class="btn btn-primary">Create account</button>
+    </fieldset>
+</form>
+
+{% endblock main %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+{% if user.is_staff %}
+<p>Welcome, {{ user }}.</p>
+{% else %}
+<p>Welcome, {{ user.customer.full_name }}.</p>
+{% endif %}
+
+<h3>Account Details</h3>
+
+<table>
+    <tr>
+        <th>Account Number</th>
+        <th>Account Name</th>
+        <th>Currency</th>
+        <th>Balance</th>
+        <th>Account Type</th>
+    </tr>
+    <tr>
+        <td>{{ account.pk }}</td>
+        <td>{{ account.name }}</td>
+        <td> {{ account.currency_type }}</td>
+        <td class="amount">{{ account.balance|floatformat:"2" }}</td>
+        <td>{{ account.is_loan }}</td>
+    </tr>
+</table>
+
+<h3>Account Transactions</h3>
+
+<table>
+    <tr>
+        <th>Transaction</th>
+        <th>Amount</th>
+        <th>Description</th>
+        <th>Date and Time</th>
+    </tr>
+    {% for movement in account.movements %}
+    <tr>
+        <td><a href="{% url 'bank_app:transaction_details' movement.transaction %}">{{ movement.transaction }}</a></td>
+        <td>{{ movement.amount|floatformat:"2" }}</td>
+        <td>{{ movement.description }}</td>
+        <td>{{ movement.created_at }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock main %}
